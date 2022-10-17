@@ -1,2 +1,2 @@
-# Base
-Lugar donde irán las bases de datos para el proyecto.
+# Codigo
+Lugar donde irá todo el codigo utilizado durante el proyecto
