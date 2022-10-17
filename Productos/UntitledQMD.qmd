@@ -1,0 +1,9 @@
+# Mejores jugadores LEC 2022
+
+Día a día cada vez hay mas gente que se quiere dedicar al mundo de los "Esport" concepto dedicado a la competencia en videojuegos, y hoy en día uno de los juegos en lo que mas predomina este concepto es el famoso "League of legends". Este famoso juego hoy en día genera miles de millones de dolares anuales en el ámbito de los Esport, el juego consiste en una batalla por equipos de 5 jugadores donde seleccionan un personaje dentro de una variedad de mas de 150 campeones, en el cual los jugadores intentan eliminar al equipo rival matándolos, destruyendo sus edificios y matando monstruos para fortalecerse.
+
+Dicho esto analizaremos a los jugadores de la liga LEC (liga/torneo jugado por equipos europeos),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.
+
+La base de datos que utilizaremos en este análisis fue obtenida de: https://www.kaggle.com/datasets/jordipompas/lec-regular-season-2021?select=LEC+2022+Spring+-+Player+Stats.csv
+
+Empezaremos el proyecto analizando la cantidad de juegos jugados por cada jugador y luego ver si las estadísticas que ellos consiguieron durante los juegos validan el hecho de haber ganado, esto se visualizara atravez de distintos gráficos para luego hacer el análisis de regresión y así ver cual fue el mejor jugador de la LEC 2022 y que es lo que mas importa para ganar dentro de la partida .
