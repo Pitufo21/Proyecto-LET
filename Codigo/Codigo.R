@@ -12,7 +12,14 @@ datos$`W%` <-(  as.numeric(str_remove_all(datos$`W%`, "%")))
 datos%>%
   filter(datos$`W%`>50)%>%
 ggplot(aes(x= Player,y= `W%`))+
-  geom_col(fill="green", col = "gray40" )+ coord_flip()
+  geom_col(fill="#BE95C4", col = "black" )+ coord_flip()+
+  labs(x = "Jugadores", y = "% de victorias", title = "Jugadores con el mejor winratio")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 0.5), 
+       axis.text.x = element_text(size = 10),
+       axis.text.y = element_text(size = 10),
+)
 
 
 
@@ -22,4 +29,5 @@ Descripcion <- c("Nombre del jugador","Porcentajes de victorias respecto a las d
        "diferencia de oro al minuto 10 respecto al rival","Porcentaje de participacion de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo)")
 c <- cbind(Variables,Descripcion)%>%as.data.frame()%>%
   gt()
-c
+
+
