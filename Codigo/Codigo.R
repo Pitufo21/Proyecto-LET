@@ -31,3 +31,14 @@ c <- cbind(Variables,Descripcion)%>%as.data.frame()%>%
   gt()
 
 
+datos%>%
+  filter(datos$KDA>5)%>%
+  ggplot(aes(x= Player,y= KDA))+
+  geom_col(fill="#9F86C0", col = "black" )+ coord_flip()+
+  labs(x = "Jugadores", y = " KDA", title = "Los 5 jugadores con mejor KDA")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+  )
