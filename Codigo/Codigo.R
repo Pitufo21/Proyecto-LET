@@ -13,7 +13,7 @@ datos%>%
   filter(datos$`W%`>50)%>%
 ggplot(aes(x= Player,y= `W%`))+
   geom_col(fill="#BE95C4", col = "black" )+ coord_flip()+
-  labs(x = "Jugadores", y = "% de victorias", title = "Jugadores con el mejor winratio")+
+  labs(x = "", y = "% de victorias", title = "Jugadores con el mejor winratio")+
   ggthemes::theme_base()+
   ggx::gg_("Center the title please")+
   theme(plot.subtitle = element_text(hjust = 0.5), 
@@ -46,12 +46,13 @@ datos%>%
 
 datos%>%
   filter(datos$GD10>100)%>%
-  ggplot(aes(x= Player,y= GD10))+
+  ggplot(aes(x= Player,y= fct_infreq(GD10)))+
   geom_col(fill="#E0B1CB", col = "black" )+ coord_flip()+
-  labs(x = fct_infreq(datos$GD10), y = "Diferencia de oro", title = "Diferencia de oro de los jugadores",subtitle = "Al minuto 10")+
+  labs(x = "", y = "Diferencia de oro", title = "Diferencia de oro de los jugadores",subtitle = "Al minuto 10")+
   ggthemes::theme_base()+
   ggx::gg_("Center the title please")+
   theme(plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 10),
   )
+
