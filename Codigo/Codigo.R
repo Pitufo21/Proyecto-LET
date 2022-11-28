@@ -35,7 +35,7 @@ datos%>%
   filter(datos$KDA>5)%>%
   ggplot(aes(x= Player,y= KDA))+
   geom_col(fill="#9F86C0", col = "black" )+ coord_flip()+
-  labs(x = "Jugadores", y = " KDA", title = "Los 5 jugadores con mejor KDA")+
+  labs(x = "", y = " KDA", title = "Los 5 jugadores con mejor KDA")+
   ggthemes::theme_base()+
   ggx::gg_("Center the title please")+
   theme(plot.subtitle = element_text(hjust = 0.5), 
@@ -48,7 +48,7 @@ datos%>%
   filter(datos$GD10>100)%>%
   ggplot(aes(x= Player,y= GD10))+
   geom_col(fill="#E0B1CB", col = "black" )+ coord_flip()+
-  labs(x = "Jugadores", y = "Diferencia de oro", title = "Diferencia de oro de los jugadores",subtitle = "Al minuto 10")+
+  labs(x = "", y = "Diferencia de oro", title = "Diferencia de oro de los jugadores",subtitle = "Al minuto 10")+
   ggthemes::theme_base()+
   ggx::gg_("Center the title please")+
   theme(plot.subtitle = element_text(hjust = 0.5), 
