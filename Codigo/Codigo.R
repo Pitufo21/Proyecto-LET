@@ -56,3 +56,30 @@ datos%>%
         axis.text.y = element_text(size = 10),
   )
 
+
+
+datos%>%
+  filter(datos$KP > 73)%>%
+  ggplot(aes(x= Player,y= KP))+
+  geom_col(fill="#9F86C1", col = "black" )+ coord_flip()+
+  labs(x = "", y = "KP", title = "Los jugadores sobre 73% de KP ")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 2), 
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+  )
+
+
+
+datos%>%
+  filter(datos$CSPM > 9)%>%
+  ggplot(aes(x= Player,y= ))+
+  geom_col(fill="#9F86C1", col = "black" )+ coord_flip()+
+  labs(x = "", y = "CSPM", title = "Los 7 jugadores con mejor CSPM")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+  )

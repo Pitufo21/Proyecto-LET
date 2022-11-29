@@ -20,20 +20,20 @@ Se usaran datos obtenidos de la pagina Kaggle, de las cuales solo serán utiliza
 
 Las variables a continuación fueron escogidas por un experto como las mas decisivas dentro del juego
 
-| Variables | Descripcion                                                                                                               |
-|-------------|-----------------------------------------------------------|
+| Variables | Descripción                                                                                                               |
+|----------------|--------------------------------------------------------|
 | Player    | Nombre del jugador                                                                                                        |
 | W%        | Porcentajes de victorias respecto a las derrotas                                                                          |
 | KDA       | Puntaje calculado por la suma de los asesinatos + asistencias(ayudas de asesinatos), dividido por las muertes del jugador |
 | CSPM      | Cantidad de minions cosechados por minuto                                                                                 |
 | GD10      | Diferencia de oro al minuto 10 respecto al rival                                                                          |
-| KP        | Porcentaje de participacion de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo  |
+| KP        | Porcentaje de participación de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo  |
 
 ## Inicio del proyecto
 
 ### League of legends el videojuego
 
-League of legedns o LOL como es conocido mayormente es un juego donde 10 jugadores se enfrentan en equipos de 5 personas. Cada jugador selecciona un personaje único dentro de una selección de 150 personajes diferentes, donde su objetivo es destruir la base rival.
+League of legends o LOL como es conocido mayormente es un juego donde 10 jugadores se enfrentan en equipos de 5 personas. Cada jugador selecciona un personaje único dentro de una selección de 150 personajes diferentes, donde su objetivo es destruir la base rival.
 
 Para poder llegar al objetivo del juego cada jugador debe conseguir cs (termino usado para matar monstruos neutrales del juego) y así ganar oro para comprar objetos y fortalecerse, por otro lado también pueden conseguir este oro matando a los mismos jugadores del equipo rival.
 
@@ -60,3 +60,23 @@ Podemos notar que los jugadores que obtienen un mayor valor KDA están alrededor
 Este valor es la ventaja que genero el jugador contra su respectivo rival hasta el minuto 10, por lo que de alguna manera estamos evaluando que tan efectivos son los jugadores para sacar ventaja al inicio del juego.
 
 ![](images/gd.png)
+
+Se pueden destacar claramente a los jugadores "upset", "alphari" y "larssen" por lo que se podría decir que los mejores jugadores para obtener una ventaja temprana son estos lo cual influye demasiado al momento de decidir que equipo ganara.
+
+##### CSPM
+
+El cs obtenido por minuto es demasiado importante dado que de alguna manera te marca cuanto oro conseguirás durante la partida mientras mayor sea el numero mejor por lo que es un factor determinante para obtener objetos y hacer mas fácil ganar la partida.
+
+![](images/CSPM.png)
+
+Todos estos jugadores parecen tener el mismo CSPM por lo que los 7 son buenos candidatos para obtener el oro y ayudar a ganar la partida.
+
+##### KP
+
+El KP o kill participation es simplemente el porcentaje de participación de un jugador respecto al equipo por lo que nos indica que tanto ayudan a su equipo a asesinar al equipo rival.
+
+![](images/KP-01.png)
+
+Podemos ver que ahora aparecen nombres distintos tales como "zanzarah" y "advienne" lo cual tiene sentido ya que estamos buscando al mejor jugador de manera individual y este es un parámetro para jugadores en equipo.
+
+#### Resultados y conclusión
