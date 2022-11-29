@@ -2,6 +2,8 @@
 
 ### Abstract
 
+Durante el año 2022 la LEC tuvo un gran impacto en los esports y se quiso saber cual jugador fue el mas predominante en la liga a nivel individual el cual se concluyo con los análisis de los datos que fue Upset jugador para el equipo de Fanatic Esports
+
 ### Introducción
 
 Día a día cada vez hay más gente que se quiere dedicar al mundo de los "Esport" concepto dedicado a la competencia en videojuegos, con el objetivo de entretener a cierto publico de personas y con un beneficio lucrativo bastante importante, hablamos de miles de millones de dolares generados por los "Esports". Hoy en día uno de los juegos más conocido en el ámbito de la competición es el "League of legends".
@@ -80,3 +82,6 @@ El KP o kill participation es simplemente el porcentaje de participación de un 
 Podemos ver que ahora aparecen nombres distintos tales como "zanzarah" y "advienne" lo cual tiene sentido ya que estamos buscando al mejor jugador de manera individual y este es un parámetro para jugadores en equipo.
 
 #### Resultados y conclusión
+
+Tal como pudimos apreciar en los gráficos hay diversos jugadores que destacan en distintas categorías pero hay uno que resalta en casi todos los aspectos durante la LEC temporada 2022 es el jugador "upset" adc del equipo de fanatic esports dado a su excelente KDA que demuestra la superioridad que tiene contra sus rivales y la ventaja de oro que es capas de lograr durante la partida.\
+Como recomendación para contratar jugadores para la temporada LEC 2024 se recomienda usar los mismo criterios que aquí como datos objetivos de rendimientos de jugadores.
