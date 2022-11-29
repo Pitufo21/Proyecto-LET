@@ -45,12 +45,64 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="mejores-jugadores-lec-2022" class="level1">
-<h1>Mejores jugadores LEC 2022</h1>
-<p>Día a día cada vez hay mas gente que se quiere dedicar al mundo de los “Esport” concepto dedicado a la competencia en videojuegos, y hoy en día uno de los juegos en lo que mas predomina este concepto es el famoso “League of legends”. Este famoso juego hoy en día genera miles de millones de dolares anuales en el ámbito de los Esport, el juego consiste en una batalla por equipos de 5 jugadores donde seleccionan un personaje dentro de una variedad de mas de 150 campeones, en el cual los jugadores intentan eliminar al equipo rival matándolos, destruyendo sus edificios y matando monstruos para fortalecerse.</p>
-<p>Dicho esto analizaremos a los jugadores de la liga LEC (liga/torneo jugado por equipos europeos),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.</p>
-<p>La base de datos que utilizaremos en este análisis fue obtenida de: https://www.kaggle.com/datasets/jordipompas/lec-regular-season-2021?select=LEC+2022+Spring+-+Player+Stats.csv</p>
-<p>Empezaremos el proyecto analizando la cantidad de juegos jugados por cada jugador y luego ver si las estadísticas que ellos consiguieron durante los juegos validan el hecho de haber ganado, esto se visualizara atravez de distintos gráficos para luego hacer el análisis de regresión y así ver cual fue el mejor jugador de la LEC 2022 y que es lo que mas importa para ganar dentro de la partida .</p>
+<section id="mejores-jugadores-lec-league-european-championship-2022" class="level1">
+<h1>Mejores jugadores LEC (League european championship) 2022</h1>
+<section id="abstract" class="level3">
+<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
+</section>
+<section id="introduccion" class="level3">
+<h3 class="anchored" data-anchor-id="introduccion">Introduccion</h3>
+<p>Día a día cada vez hay más gente que se quiere dedicar al mundo de los “Esport” concepto dedicado a la competencia en videojuegos, con el objetivo de entretener a cierto publico de personas y con un beneficio lucrativo bastante importante, hablamos de miles de millones de dolares generados por los “Esports”. Hoy en día uno de los juegos más conocido en el ámbito de la competición es el “League of legends”.</p>
+<p>El juego “League of legends” debe su fama al ser un juego de estrategia por equipos, de bajo rendimiento y ultimo y a la vez los mas importante es un juego gratuito, por lo que es accesible para algún grupo de amigos cualquiera sean sus computadoras, pero este no es motivo por el cual brilla tanto en los “Esports” sino que son sus jugadores. Un jugador de la LEC gana en promedio 15 millones de pesos chilenos mensuales y esto se debe a que son muy buenos en lo que hacen, osea jugando.</p>
+<p>Dicho esto analizaremos a los jugadores de la liga LEC (League european championship),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.¿</p>
+<p>Empezaremos el proyecto analizando la cantidad de juegos jugados por cada jugador y luego ver si las estadísticas que ellos consiguieron durante los juegos validan el hecho de haber ganado, esto se visualizara a través de distintos gráficos para luego hacer el análisis de regresión y así ver cual fue el mejor jugador de la LEC 2022 y que es lo que más importa para ganar dentro de la partida .</p>
+</section>
+<section id="datos" class="level3">
+<h3 class="anchored" data-anchor-id="datos">Datos</h3>
+<p>Se usaran datos obtenidos de la pagina Kaggle</p>
+<section id="variables" class="level4">
+<h4 class="anchored" data-anchor-id="variables">VARIABLES</h4>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Player</td>
+<td>Nombre del jugador</td>
+</tr>
+<tr class="even">
+<td>W%</td>
+<td>Porcentajes de victorias respecto a las derrotas</td>
+</tr>
+<tr class="odd">
+<td>KDA</td>
+<td>Puntaje calculado por la suma de los asesinatos + asistencias(ayudas de asesinatos), dividido por las muertes del jugador</td>
+</tr>
+<tr class="even">
+<td>CSPM</td>
+<td>Cantidad de minions cosechados por minuto</td>
+</tr>
+<tr class="odd">
+<td>GD10</td>
+<td>Diferencia de oro al minuto 10 respecto al rival</td>
+</tr>
+<tr class="even">
+<td>KP</td>
+<td>Porcentaje de participacion de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo</td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/Captura%20de%20pantalla%202022-11-28%20201521.png" class="img-fluid"></p>
+</section>
+</section>
 </section>
 
 </main>

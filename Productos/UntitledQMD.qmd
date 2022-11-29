@@ -1,15 +1,48 @@
 # Mejores jugadores LEC (League european championship) 2022
 
-#### Abstract
+### Abstract
 
-#### Introduccion
+### Introduccion
 
 Día a día cada vez hay más gente que se quiere dedicar al mundo de los "Esport" concepto dedicado a la competencia en videojuegos, con el objetivo de entretener a cierto publico de personas y con un beneficio lucrativo bastante importante, hablamos de miles de millones de dolares generados por los "Esports". Hoy en día uno de los juegos más conocido en el ámbito de la competición es el "League of legends".
 
 El juego "League of legends" debe su fama al ser un juego de estrategia por equipos, de bajo rendimiento y ultimo y a la vez los mas importante es un juego gratuito, por lo que es accesible para algún grupo de amigos cualquiera sean sus computadoras, pero este no es motivo por el cual brilla tanto en los "Esports" sino que son sus jugadores. Un jugador de la LEC gana en promedio 15 millones de pesos chilenos mensuales y esto se debe a que son muy buenos en lo que hacen, osea jugando.
 
-Dicho esto analizaremos a los jugadores de la liga LEC (League european championship),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.¿
+Dicho esto analizaremos a los jugadores de la liga LEC (League european championship),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.
 
 Empezaremos el proyecto analizando la cantidad de juegos jugados por cada jugador y luego ver si las estadísticas que ellos consiguieron durante los juegos validan el hecho de haber ganado, esto se visualizara a través de distintos gráficos para luego hacer el análisis de regresión y así ver cual fue el mejor jugador de la LEC 2022 y que es lo que más importa para ganar dentro de la partida .
 
+### Datos
+
+Se usaran datos obtenidos de la pagina Kaggle, de las cuales solo serán utilizadas las mencionadas en la sección "VARIABLES".
+
+#### VARIABLES
+
+Las variables a continuación fueron escogidas por un experto como las mas decisivas dentro del juego
+
+| Variables | Descripcion                                                                                                               |
+|-----------|---------------------------------------------------------------------------------------------------------------------------|
+| Player    | Nombre del jugador                                                                                                        |
+| W%        | Porcentajes de victorias respecto a las derrotas                                                                          |
+| KDA       | Puntaje calculado por la suma de los asesinatos + asistencias(ayudas de asesinatos), dividido por las muertes del jugador |
+| CSPM      | Cantidad de minions cosechados por minuto                                                                                 |
+| GD10      | Diferencia de oro al minuto 10 respecto al rival                                                                          |
+| KP        | Porcentaje de participacion de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo  |
+
+## Inicio del proyecto
+
+### League of legends el videojuego
+
+League of legedns o LOL como es conocido mayormente es un juego donde 10 jugadores se enfrentan en equipos de 5 personas. Cada jugador selecciona un personaje único dentro de una selección de 150 personajes diferentes, donde su objetivo es destruir la base rival.
+
+Para poder llegar al objetivo del juego cada jugador debe conseguir cs (termino usado para matar monstruos neutrales del juego) y así ganar oro para comprar objetos y fortalecerse, por otro lado también pueden conseguir este oro matando a los mismos jugadores del equipo rival.
+
+Dicho esto jugadores de muy alto nivel destacan haciendo jugadas impresionantes matando a los rivales o consiguiendo una cantidad absurda de cs, pero la verdadera pregunta es ¿Cuales son los mejores jugadores?, para responder esta pregunta se analizaran las distintas variables obtenidas de partidas profesionales e intentar determinar al mejor jugador de la LEC a la fecha.
+
+#### Análisis
+
+A continuación tenemos el gráfico que muestra a los jugadores que ganaron más del 60% de sus partidas.
+
 ![](images/Captura%20de%20pantalla%202022-11-28%20201521.png)
+
+Dado este gráfico nos concentraremos

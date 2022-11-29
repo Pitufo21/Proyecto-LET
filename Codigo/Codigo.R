@@ -46,7 +46,7 @@ datos%>%
 
 datos%>%
   filter(datos$GD10>100)%>%
-  ggplot(aes(x= Player,y= fct_infreq(GD10)))+
+  ggplot(aes(x= Player,y= GD10))+
   geom_col(fill="#E0B1CB", col = "black" )+ coord_flip()+
   labs(x = "", y = "Diferencia de oro", title = "Diferencia de oro de los jugadores",subtitle = "Al minuto 10")+
   ggthemes::theme_base()+
