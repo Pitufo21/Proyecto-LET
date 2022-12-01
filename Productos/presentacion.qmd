@@ -1,23 +1,161 @@
 ---
-title: "Untitled"
-format: revealjs
+title: "Mejores jugadores LEC (League european championship) 2022"
+subtitle: ""
+format: 
+  revealjs
+css: styles.css
+author: 
+ - "Matias Alarcon" 
 editor: visual
+title-slide-attributes: 
+  data-background-image: ""
+  data-background-size: 30%
+  data-background-position: 2% 2%
 ---
 
-### Abstract
+```{r}
+datos <- rio::import("LEC 2022 Spring - Player Stats.csv")
 
-Durante el año 2022 la LEC tuvo un gran impacto en los esports y se quiso saber cual jugador fue el mas predominante en la liga a nivel individual el cual se concluyo con los análisis de los datos que fue Upset jugador para el equipo de Fanatic Esports
+require(ggplot2)
+library(janitor)
+library(stringr)
+require(tidyverse)
+require(gt)
 
-### Introducción
+datos$`W%` <-(  as.numeric(str_remove_all(datos$`W%`, "%"))) 
+```
 
-Día a día cada vez hay más gente que se quiere dedicar al mundo de los "Esport" concepto dedicado a la competencia en videojuegos, con el objetivo de entretener a cierto publico de personas y con un beneficio lucrativo bastante importante, hablamos de miles de millones de dolares generados por los "Esports". Hoy en día uno de los juegos más conocido en el ámbito de la competición es el "League of legends".
+# Introducción
 
-El juego "League of legends" debe su fama al ser un juego de estrategia por equipos, de bajo rendimiento y ultimo y a la vez los mas importante es un juego gratuito, por lo que es accesible para algún grupo de amigos cualquiera sean sus computadoras, pero este no es motivo por el cual brilla tanto en los "Esports" sino que son sus jugadores. Un jugador de la LEC gana en promedio 15 millones de pesos chilenos mensuales y esto se debe a que son muy buenos en lo que hacen, osea jugando.
+::: {.incremental .semi-fade-out}
+-   ¿Qué son los "Esports"?.
 
-Dicho esto analizaremos a los jugadores de la liga LEC (League european championship),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.
+-   Importancia de los Esports.
+:::
 
-### Datos
+##  {.vertical-align}
 
-Se usaran datos obtenidos de la pagina Kaggle, de las cuales solo serán utilizadas las mencionadas en la sección "VARIABLES".
+## El juego
 
-#### 
+::: {.incremental .semi-fade-out}
+-   Duelo por equipos
+
+-   Estrategia
+
+-   Amigos
+:::
+
+##  {.vertical-align}
+
+![](images/League_of_Legends_European_Championship_logo.svg.png). . .
+
+------------------------------------------------------------------------
+
+##  {.smaller}
+
+Contiene las siguientes variables
+
+::: {.incremental .semi-fade-out}
+-   `Player` : Nombre del jugador.
+
+-   `W%` : Porcentajes de victorias respecto a las derrotas.
+
+-   `KDA` : Puntaje calculado por la suma de los asesinatos + asistencias(ayudas de asesinatos), dividido por las muertes del jugador.
+
+-   `CSPM`: Cantidad de minions cosechados por minuto.
+
+-   `GD10`: Diferencia de oro al minuto 10 respecto al rival.
+
+-   `KP`: Porcentaje de participación de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo.
+:::
+
+------------------------------------------------------------------------
+
+![](images/faker.png){fig-align="center"}
+
+# ¿Por qué?
+
+::: {.incremental .semi-fade-out}
+-   Juego por equipos
+
+-   Estrategia
+
+-   Amigos
+:::
+
+------------------------------------------------------------------------
+
+![](images/yo-04.jpg){fig-align="center"}
+
+# Gráficos
+
+```{r}
+datos%>%
+  filter(datos$`W%`>50)%>%
+ggplot(aes(x= Player,y= `W%`))+
+  geom_col(fill="#BE95C4", col = "black" )+ coord_flip()+
+  labs(x = "", y = "% de victorias", title = "Jugadores con el mejor winratio")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 0.5), 
+       axis.text.x = element_text(size = 10),
+       axis.text.y = element_text(size = 10),
+)
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+datos%>%
+  filter(datos$KDA>5)%>%
+  ggplot(aes(x= Player,y= KDA))+
+  geom_col(fill="#9F86C0", col = "black" )+ coord_flip()+
+  labs(x = "", y = " KDA", title = "Los 5 jugadores con mejor KDA")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+  )
+```
+
+------------------------------------------------------------------------
+
+```{r}
+datos%>%
+  filter(datos$GD10>100)%>%
+  ggplot(aes(x= Player,y= GD10))+
+  geom_col(fill="#E0B1CB", col = "black" )+ coord_flip()+
+  labs(x = "", y = "Diferencia de oro", title = "Diferencia de oro de los jugadores",subtitle = "Al minuto 10")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+  )
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+datos%>%
+  filter(datos$KP > 73)%>%
+  ggplot(aes(x= Player,y= KP))+
+  geom_col(fill="#9F86C1", col = "black" )+ coord_flip()+
+  labs(x = "", y = "KP", title = "Los jugadores sobre 73% de KP ")+
+  ggthemes::theme_base()+
+  ggx::gg_("Center the title please")+
+  theme(plot.subtitle = element_text(hjust = 2), 
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+  )
+
+```
+
+# Conclusión
+
+![](images/FNC_UPSET_L.png){fig-align="center"}
+
+# Gracias por su atención

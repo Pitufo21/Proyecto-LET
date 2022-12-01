@@ -9,7 +9,8 @@
 <link href="presentacion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.1.251">
 
-  <title>Untitled</title>
+  <meta name="author" content="Matias Alarcon">
+  <title>Mejores jugadores LEC (League european championship) 2022</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,6 +30,7 @@
     }
   </style>
   <link rel="stylesheet" href="presentacion_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="styles.css">
   <link href="presentacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="presentacion_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="presentacion_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -322,21 +324,101 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
-  <h1 class="title">Untitled</h1>
+<section id="title-slide" data-background-image="" data-background-position="2% 2%" data-background-size="30%" class="center">
+  <h1 class="title">Mejores jugadores LEC (League european championship) 2022</h1>
+  <p class="author">Matias Alarcon</p>
 </section>
 
 <section class="slide level2">
 
-<h3 id="abstract">Abstract</h3>
-<p>Durante el año 2022 la LEC tuvo un gran impacto en los esports y se quiso saber cual jugador fue el mas predominante en la liga a nivel individual el cual se concluyo con los análisis de los datos que fue Upset jugador para el equipo de Fanatic Esports</p>
-<h3 id="introducción">Introducción</h3>
-<p>Día a día cada vez hay más gente que se quiere dedicar al mundo de los “Esport” concepto dedicado a la competencia en videojuegos, con el objetivo de entretener a cierto publico de personas y con un beneficio lucrativo bastante importante, hablamos de miles de millones de dolares generados por los “Esports”. Hoy en día uno de los juegos más conocido en el ámbito de la competición es el “League of legends”.</p>
-<p>El juego “League of legends” debe su fama al ser un juego de estrategia por equipos, de bajo rendimiento y ultimo y a la vez los mas importante es un juego gratuito, por lo que es accesible para algún grupo de amigos cualquiera sean sus computadoras, pero este no es motivo por el cual brilla tanto en los “Esports” sino que son sus jugadores. Un jugador de la LEC gana en promedio 15 millones de pesos chilenos mensuales y esto se debe a que son muy buenos en lo que hacen, osea jugando.</p>
-<p>Dicho esto analizaremos a los jugadores de la liga LEC (League european championship),durante el año 2022 hasta la fecha 17-10, los cuales serán analizados y clasificados según su desempeño durante esta liga y ademas se hará un análisis de regresión lineal para ver cuales son las características dentro del juego que hacen a algún jugador destacar mas que otros.</p>
-<h3 id="datos">Datos</h3>
-<p>Se usaran datos obtenidos de la pagina Kaggle, de las cuales solo serán utilizadas las mencionadas en la sección “VARIABLES”.</p>
-<h4 id="section"></h4>
+<div class="cell">
+
+</div>
+</section>
+<section>
+<section id="introducción" class="title-slide slide level1 center">
+<h1>Introducción</h1>
+<div class="semi-fade-out">
+<ul>
+<li class="fragment"><p>¿Qué son los “Esports”?.</p></li>
+<li class="fragment"><p>Importancia de los Esports.</p></li>
+</ul>
+</div>
+</section>
+<section id="section" class="slide level2 vertical-align">
+<h2></h2>
+</section>
+<section id="el-juego" class="slide level2">
+<h2>El juego</h2>
+<div class="semi-fade-out">
+<ul>
+<li class="fragment"><p>Duelo por equipos</p></li>
+<li class="fragment"><p>Estrategia</p></li>
+<li class="fragment"><p>Amigos</p></li>
+</ul>
+</div>
+</section>
+<section id="section-1" class="slide level2 vertical-align">
+<h2></h2>
+<p><img data-src="images/League_of_Legends_European_Championship_logo.svg.png">. . .</p>
+</section>
+<section id="section-2" class="slide level2 smaller">
+<h2></h2>
+<p>Contiene las siguientes variables</p>
+<div class="semi-fade-out">
+<ul>
+<li class="fragment"><p><code>Player</code> : Nombre del jugador.</p></li>
+<li class="fragment"><p><code>W%</code> : Porcentajes de victorias respecto a las derrotas.</p></li>
+<li class="fragment"><p><code>KDA</code> : Puntaje calculado por la suma de los asesinatos + asistencias(ayudas de asesinatos), dividido por las muertes del jugador.</p></li>
+<li class="fragment"><p><code>CSPM</code>: Cantidad de minions cosechados por minuto.</p></li>
+<li class="fragment"><p><code>GD10</code>: Diferencia de oro al minuto 10 respecto al rival.</p></li>
+<li class="fragment"><p><code>KP</code>: Porcentaje de participación de asesinatos(Asesinatos+asistencias del jugador divido en el total de asesinatos del equipo.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/faker.png" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="por-qué" class="title-slide slide level1 center">
+<h1>¿Por qué?</h1>
+<div class="semi-fade-out">
+<ul>
+<li class="fragment"><p>Juego por equipos</p></li>
+<li class="fragment"><p>Estrategia</p></li>
+<li class="fragment"><p>Amigos</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/yo-04.jpg" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="gráficos" class="title-slide slide level1 center">
+<h1>Gráficos</h1>
+
+<img data-src="presentacion_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="presentacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="presentacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="presentacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section></section>
+<section id="conclusión" class="title-slide slide level1 center">
+<h1>Conclusión</h1>
+
+<img data-src="images/FNC_UPSET_L.png" class="r-stretch quarto-figure-center"></section>
+
+<section id="gracias-por-su-atención" class="title-slide slide level1 center">
+<h1>Gracias por su atención</h1>
 <div class="footer footer-default">
 
 </div>
@@ -552,6 +634,48 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
