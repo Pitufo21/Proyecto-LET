@@ -1,0 +1,440 @@
+---
+title: "Mejores jugadores LEC (League european championship) 2022"
+subtitle: ""
+format: 
+  revealjs
+css: styles.css
+author: 
+ - "Matias Alarcon" 
+editor: visual
+title-slide-attributes: 
+  data-background-image: ""
+  data-background-size: 30%
+  data-background-position: 2% 2%
+---
+
+```{r}
+data("Base/LEC 2022 Spring - Player Stats")
+datos <- LEC 2022 Spring - Player Stats
+
+require(ggplot2)
+library(janitor)
+library(stringr)
+require(tidyverse)
+require(gt)
+
+datos$`W%` <-(  as.numeric(str_remove_all(datos$`W%`, "%"))) 
+```
+
+## Introducción
+
+::: {.incremental .semi-fade-out}
+-   ¿Qué son los "Esports"?
+
+-   Importancia de los Esports
+:::
+
+# League of Legends {.vertical-align}
+
+------------------------------------------------------------------------
+
+## El juego
+
+::: {style="text-align: justify"}
+-Juego por equipos
+
+-Estrategia
+:::
+
+## LEC
+
+. . .
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+Se utilizará la base de datos `pharmacoSmoking` de la librería `asaur`.
+
+La base de datos contiene información sobre un estudio cuyo objetivo es estudiar el tiempo hasta que un paciente vuelve a fumar. En el estudio se divide a los pacientes en dos grupos, uno con terapia triple y otros con parche.
+
+------------------------------------------------------------------------
+
+##  {.smaller}
+
+Contiene las siguientes variables
+
+```{r, echo=FALSE}
+library(asaur)
+data("pharmacoSmoking")
+#   help("pharmacoSmoking")
+```
+
+::: {.incremental .semi-fade-out}
+-   `id` : Número identificador del paciente
+
+-   `ttr` : Tiempo en días hasta la recaída.
+
+-   `relapse` : Indicador de recaída.
+
+-   `grp`: Grupo de tratamiento asignado aleatoriamente con niveles: `combination` o `patchOnly`.
+
+-   `age`: Edad en años en el momento de la aleatorización.
+
+-   `priorAttempts`: El número de intentos previos para dejar de fumar.
+
+-   `longesrNoSmoke`: El período de tiempo más largo, en días, que el paciente ha pasado previamente sin fumar.
+
+-   `race`: Variable categórica con posibles valores `black`, `hispanic`, `white` u `other`.
+
+-   `employment`: Variable categórica con valores `ft` (jornada completa), `pt` (part-time) u `other`.
+
+-   `yearsSmoking`: Número de años que el paciente había sido fumador.
+
+-   `levelSmoking`: Variable categórica con valores `heavy` o `light`.
+:::
+
+------------------------------------------------------------------------
+
+::: {style="font-size: 0.8em; text-align: justify"}
+Además, se crea la función `smoothSEcurve` para realizar curvas suavizadas de los datos
+:::
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+```{r}
+#| echo: TRUE
+
+smoothSEcurve <- function(yy, xx) {
+  # primero se debe utilizar la funcion plot
+  xx.list <- min(xx) + ((0:100)/100)*(max(xx) - min(xx))
+  yy.xx <- predict(loess(yy ~ xx), se=T,
+                   newdata=data.frame(xx=xx.list))
+  lines(yy.xx$fit ~ xx.list, lwd=2)
+  lines(yy.xx$fit -
+          qt(0.975, yy.xx$df)*yy.xx$se.fit ~ xx.list, lty=2)
+  lines(yy.xx$fit +
+          qt(0.975, yy.xx$df)*yy.xx$se.fit ~ xx.list, lty=2)
+}
+```
+
+------------------------------------------------------------------------
+
+### Pre-procesamiento {.smaller}
+
+<p style="margin-bottom:3cm;">
+
+</p>
+
+```{r}
+#| echo: TRUE
+#| results: hide
+#| code-line-numbers: "1,2,3,4|6,7,8"
+# librerias utilizadas
+library(asaur)
+library(survival)
+library(dplyr)
+
+# cargamos la base de datos
+data("pharmacoSmoking")
+datos <- pharmacoSmoking
+```
+
+------------------------------------------------------------------------
+
+::: {style="font-size: 0.9em; text-align: justify"}
+Se truncará la variable `priorAttempts` en 20. Los valores que exceden 20 se sugieren que no son correctos. Además, se descartan las variables que no se utilizarán.
+:::
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+. . .
+
+```{r}
+#| echo: TRUE
+#| results: hide
+#| code-line-numbers: "1,2,3,4,5|7,8|"
+
+datos$priorAttemptsT <- datos$priorAttempts
+datos$priorAttemptsT[datos$priorAttempts > 20] <- 20
+
+# Eliminaremos las variables que no se utilizaran
+datos <- datos %>% select(-c(ageGroup2, ageGroup4, priorAttempts))
+
+# previsualizacion de los datos
+head(datos)
+```
+
+. . .
+
+```{r}
+#| echo: FALSE
+library(kableExtra)
+  datos %>% head() %>% 
+    knitr::kable() %>% 
+    kable_minimal(bootstrap_options = "condensed", font_size = 20)
+```
+
+------------------------------------------------------------------------
+
+### Gráfico de residuos martingale
+
+. . .
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+```{r}
+#| echo: TRUE
+#| results: hide
+modelo.nulo <- coxph(Surv(ttr, relapse) ~ 1, data = datos)
+summary(modelo.nulo)
+```
+
+. . .
+
+```{r}
+#| echo: FALSE
+summary(modelo.nulo)
+```
+
+. . .
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+# ¿Por qué? {.vertical-align}
+
+------------------------------------------------------------------------
+
+-Potencia en los "Esports"
+
+\-
+
+. . .
+
+$$
+2(\hat{l_i} - l_i)
+$$
+
+------------------------------------------------------------------------
+
+## Definición
+
+La esencia es similar a un test de razón de verosimilitud para el individuo $i$. Por ende, para obtener una cantidad que siga una distribución normal aproximada se define la desviación residual como:
+
+$$
+\hat{d_i}=sign(\hat{m_i})\sqrt{2(\hat{l_i} - l_i)}
+$$
+
+. . .
+
+::: {style="font-size: 0.9em; text-align: justify"}
+Su uso en `R` se implementa de manera similar que los residuos de martingale
+:::
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+. . .
+
+```{r}
+#| echo: TRUE
+#| results: hide
+
+residuals(modelo.step, type='deviance')
+```
+
+. . .
+
+------------------------------------------------------------------------
+
+## Implementación en `R`
+
+Con fines comparativos se tendrán en cuenta los valores de la variable respuesta en contraste con ambos residuos
+
+------------------------------------------------------------------------
+
+Primero se toman los residuos de martingale asociados con la variable respuesta
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+plot(datos$ttr, res.mg, pch=19, las=1, bty='n', col=c("red", "cyan"),
+     xlab='Time', ylab='Martingale residual')
+legend(x = "bottom",legend=c("Censored", "Died / Liver failure"), pch=19, col=c("red", "cyan"))
+```
+
+------------------------------------------------------------------------
+
+Ahora se consideran los residuos de desviación asociados con la respuesta
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+res.dev = residuals(modelo.step, type='deviance')
+plot(datos$ttr, res.dev, pch=19, las=1, bty='n', col=c("red", "cyan"),
+     xlab='Time', ylab='Deviance residual')
+legend(x = "top", legend=c("Censored", "Died / Liver failure"), pch=19, col=c("red", "cyan"))
+```
+
+------------------------------------------------------------------------
+
+A continuación se muestran:
+
+. . .
+
+-   Los 5 residuos negativos más grandes
+
+```{r}
+# 5 residuos negativos más grandes
+cbind(modelo.step$y, model.matrix(modelo.step), res.dev)[order(res.dev)[1:5],] %>% 
+  knitr::kable() %>% 
+    kable_minimal(bootstrap_options = "condensed", font_size = 20)
+  
+```
+
+. . .
+
+-   Los 5 residuos positivos más grandes
+
+```{r}
+cbind(modelo.step$y, model.matrix(modelo.step), res.dev, rank(-modelo.step$linear.predictors))[order(-res.dev)[1:5],] %>% 
+  knitr::kable() %>% 
+    kable_minimal(bootstrap_options = "condensed", font_size = 20)
+```
+
+------------------------------------------------------------------------
+
+::: {style="text-align: justify"}
+Tal como se presentó en el tema anterior con los residuos martingale, otro de los usos que se le da a los residuos de desviación es analizar la significancia de las covariables. Esto se hace graficando los residuos con la covariable de interés.
+:::
+
+# Residuos Jackknife {.vertical-align}
+
+## Definición
+
+::: {style="text-align: justify"}
+El objetivo principal de estos residuos es ofrecer un criterio alternativo para identificar valores atípicos que pueden influir en el modelo de Cox. Se define como:
+:::
+
+$$ r_{ij} = \widehat{\beta}_j - \widehat{\beta}_{j(i)}$$
+
+## Implementación en `R`
+
+. . .
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+::: {style="text-align: justify"}
+Se utilizará la base de datos `pharmacoSmoking`, la cual fue descrita con anterioridad. Para ilustrar el cálculo de estos residuos, se utilizará la variable `age` como predictor.
+:::
+
+------------------------------------------------------------------------
+
+Primero, encontramos el coeficiente para la variable `age` usando todos los datos:
+
+<p style="margin-bottom:1.5cm;">
+
+</p>
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| results: hide
+result.coxph <- coxph(Surv(ttr, relapse) ~ grp + employment + age, 
+                      data = datos)
+coef.all <- result.coxph$coef[4]
+coef.all
+```
+
+<p style="margin-bottom:1cm;">
+
+</p>
+
+La estimación del coeficiente de edad es `r round(coef.all, 3)`.
+
+------------------------------------------------------------------------
+
+::: {style="font-size: 0.9em; text-align: justify"}
+A continucación, para cada sujeto por turno, se eliminará el $i$-ésimo sujeto a partir del tiempo de sobrevivencia `tt`,el indicador de censura para ducho sujeto, las covariables `grp`, `employment`, y `age`, y se ajustará un modelo de Cox con el set de datos reducidos.
+:::
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| results: hide
+#| code-line-numbers: "1,2,3|4|5,6,7,8,9|10|11,12"
+attach(datos)
+n.obs <- length(ttr)
+jkbeta.vec <- rep(NA, n.obs)
+for (i in 1:n.obs) {
+  tt.i <- ttr[-i]
+  delta.i <- relapse[-i]
+  grp.i <- grp[-i]
+  employment.i <- employment[-i]
+  age.i <- age[-i]
+  result.coxph.i <- coxph(Surv(tt.i, delta.i) ~ grp.i + employment.i + age.i)
+  coef.i <- result.coxph.i$coef[4]
+  jkbeta.vec[i] <- (coef.all - coef.i)
+}
+```
+
+------------------------------------------------------------------------
+
+::: {style="font-size: 0.8em; text-align: justify"}
+Ahora, es posible gráficar estos residuos contra los id del paciente, que colocamos en el vector `index.obs`
+:::
+
+```{r}
+#| echo: true
+#| output-location: fragment
+index.obs <- 1:n.obs
+plot(jkbeta.vec ~ index.obs, type="h", xlab="Observacion", 
+     ylab="Cambio en el coeficiente edad", cex.axis=1.3, cex.lab=1.3)
+abline(h=0)
+```
+
+------------------------------------------------------------------------
+
+::: {style="font-size: 0.8em; text-align: justify"}
+El procedimiento anterior se puede realizar con la función `residuals`.
+:::
+
+```{r}
+#| echo: true
+#| fig-width: 12
+resid.dfbeta <- residuals(result.coxph, type="dfbeta")
+n.obs <- length(ttr)
+index.obs <- 1:n.obs
+plot(resid.dfbeta[,4] ~ index.obs, type="h",
+     xlab="Observacion", ylab="Cambio en el coeficiente")
+abline(h=0)
+```
+
+# Conclusión
+
+# Gracias por su atención
+
+## Bibliografía
+
+1.  Moore DF. *Applied survival analysis using R*. 1st ed. Basel, Switzerland: Springer International Publishing; 2016.
+
+2.  Kalbfleisch JD, Prentice RL. *The statistical analysis of failure time data*. 2a ed. Nashville, TN, Estados Unidos de América: John Wiley & Sons; 2002 (p.210-214)
+
+3.  Sarsani V. *Investigating Jackknife residuals in the cox model* \[Internet\]. Vishal Sarsani. 2019 \[citado el 8 de noviembre de 2022\]. Disponible en: https://www.vishalsarsani.com/post/investigating-jackknife-residuals-in-the-cox-model
+
+------------------------------------------------------------------------
+
+4.  Dai H and Wang H, *Analysis for time-to-event data under censoring and truncation*. San Diego, CA, Estados Unidos de Am ́erica: Academic Press; 2016
