@@ -47,7 +47,7 @@ datos$`W%` <-(  as.numeric(str_remove_all(datos$`W%`, "%")))
 
 ##  {.vertical-align}
 
-![](images/lol.png). . .
+![](images/lol.png)
 
 ------------------------------------------------------------------------
 
