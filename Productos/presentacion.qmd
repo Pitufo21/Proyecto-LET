@@ -2,7 +2,8 @@
 title: "Mejores jugadores LEC (League european championship) 2022"
 subtitle: ""
 format: 
-  revealjs
+  revealjs:
+    embed-resources: true
 css: styles.css
 author: 
  - "Matias Alarcon" 
