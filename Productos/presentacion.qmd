@@ -47,7 +47,7 @@ datos$`W%` <-(  as.numeric(str_remove_all(datos$`W%`, "%")))
 
 ##  {.vertical-align}
 
-![](images/League_of_Legends_European_Championship_logo.svg.png). . .
+![](images/lol.png). . .
 
 ------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ Contiene las siguientes variables
 
 ------------------------------------------------------------------------
 
-![](images/yo-04.jpg){fig-align="center"}
+![](images/yo.jpg){fig-align="center"}
 
 # Gráficos
 
