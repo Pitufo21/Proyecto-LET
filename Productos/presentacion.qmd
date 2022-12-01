@@ -4,7 +4,6 @@ subtitle: ""
 format: 
   revealjs:
     embed-resources: true
-css: styles.css
 author: 
  - "Matias Alarcon" 
 editor: visual
